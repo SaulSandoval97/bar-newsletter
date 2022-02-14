@@ -40,7 +40,11 @@ app.post('/api/saveMail', async (req, res) => {
     method: "POST",
     body: JSON.stringify({
       email
-    })
+    }),
+    headers: {
+      "content-type": "application/json",
+      "accept": "application/vnd.vtex.ds.v10+json"
+    }
   });
   const data = await response.text();
   res.json(JSON.parse(data));
@@ -54,7 +58,11 @@ app.post('/api/uptch', async (req, res) => {
     body: JSON.stringify({
       email,
       isNewsletterOptIn: true
-    })
+    }),
+    headers: {
+      "content-type": "application/json",
+      "accept": "application/vnd.vtex.ds.v10+json"
+    }
   });
   const data = await response.text();
   res.json(JSON.parse(data));
