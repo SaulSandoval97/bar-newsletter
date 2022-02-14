@@ -33,6 +33,16 @@ app.post('/api/mexist', async (req, res) => {
   const data = await response.text();
   res.json(JSON.parse(data));
 })
+app.post('/api/mexistNW', async (req, res) => {
+  const { email } = req.body;
+  console.log(email);
+  const response = await fetch(`${process.env.HOST}/api/dataentities/${process.env.ENTITY}/search?_where=email=${email}`, {
+    method: "GET",
+    headers: headersList
+  });
+  const data = await response.text();
+  res.json(JSON.parse(data));
+})
 app.post('/api/saveMail', async (req, res) => {
   const { email } = req.body;
   console.log(email);
