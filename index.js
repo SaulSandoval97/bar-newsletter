@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 app.post('/api/mexist', async (req, res) => {
   const { email } = req.body;
   console.log(email);
-  const response = await fetch(`${process.env.HOST}/api/dataentities/${process.env.ENTITY}/search?_where=email=${email}&_fields=isNewsletterOptIn`, {
+  const response = await fetch(`${process.env.HOST}/api/dataentities/${process.env.ENTITY}/search?_where=email=${email}`, {
     method: "GET",
     headers: headersList
   });
