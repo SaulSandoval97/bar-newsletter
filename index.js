@@ -78,6 +78,17 @@ app.post('/api/uptch', async (req, res) => {
   res.json(JSON.parse(data));
 })
 
+//Landing Registro
+app.post('/api/mexist/RB', async (req, res) => {
+  const { email } = req.body;
+  const response = await fetch(`${process.env.HOST}/api/dataentities/RB/search?_where=email=${email}`, {
+    method: "GET",
+    headers: headersList
+  });
+  const data = await response.text();
+  res.json(JSON.parse(data));
+})
+
 const server = app.listen(puerto, (error) => {
   if (error) return console.log(`Error: ${error}`);
   console.log(`Server jalando en el puerto: ${server.address().port}`);
